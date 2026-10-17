@@ -1,0 +1,10 @@
+import { execFileSync } from 'node:child_process';
+import { mkdirSync, copyFileSync } from 'node:fs';
+const licenseFiles = { 'pdf-lib': 'LICENSE.md', '@pdf-lib/standard-fonts': 'LICENSE.md', '@pdf-lib/upng': 'LICENSE', pako: 'LICENSE', tslib: 'LICENSE.txt', fflate: 'LICENSE' };
+mkdirSync('public/licenses', { recursive: true });
+for (const [name, file] of Object.entries(licenseFiles)) copyFileSync(`node_modules/${name}/${file}`, `public/licenses/${name.replaceAll('/', '-')}.txt`);
+copyFileSync('LICENSE', 'public/licenses/AGPL-3.0.txt');
+copyFileSync('NOTICE.md', 'public/licenses/NOTICE.md');
+mkdirSync('public', { recursive: true });
+execFileSync('tar', ['--exclude=node_modules', '--exclude=dist', '--exclude=.git', '--exclude=public/source.tar', '--exclude=*.log', '-cf', 'public/source.tar', 'package.json', 'package-lock.json', '.gitignore', 'vite.config.js', 'playwright.config.js', 'index.html', 'merge-pdf', 'split-pdf', 'rotate-pdf', 'public/_headers', 'src', 'scripts', 'test', 'upstream', 'README.md', 'NOTICE.md', 'LICENSE']);
+console.log('Generated public/source.tar with corresponding source, tests, lockfile and build instructions.');

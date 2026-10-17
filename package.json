@@ -1,0 +1,24 @@
+{
+  "name": "pdftomd-pdfcraft-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "AGPL-3.0-only",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4174",
+    "build": "node scripts/source-archive.js && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4174",
+    "test": "node --test test/*.test.js",
+    "source:archive": "node scripts/source-archive.js",
+    "e2e": "playwright test",
+    "e2e:install": "playwright install chromium"
+  },
+  "dependencies": {
+    "fflate": "0.8.3",
+    "pdf-lib": "1.17.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.0",
+    "vite": "7.3.7"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+dist/
+public/source.tar
+*.log
+public/licenses/
+test-results/
+playwright-report/
