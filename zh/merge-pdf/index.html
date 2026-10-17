@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>合并 PDF · PDF to MD</title><meta name="description" content="在浏览器中将多个 PDF 合并为一个文件。先调整文件顺序、移除不需要的文件，再生成并下载新的 PDF。无需上传或注册账号。">
+<link rel="canonical" href="https://pdftomd-pdfcraft-tools.pages.dev/zh/merge-pdf/">
+<link rel="alternate" hreflang="en" href="https://pdftomd-pdfcraft-tools.pages.dev/merge-pdf/">
+<link rel="alternate" hreflang="zh-CN" href="https://pdftomd-pdfcraft-tools.pages.dev/zh/merge-pdf/">
+<link rel="alternate" hreflang="ja" href="https://pdftomd-pdfcraft-tools.pages.dev/ja/merge-pdf/">
+<link rel="alternate" hreflang="de" href="https://pdftomd-pdfcraft-tools.pages.dev/de/merge-pdf/">
+<link rel="alternate" hreflang="x-default" href="https://pdftomd-pdfcraft-tools.pages.dev/merge-pdf/">
+<link rel="stylesheet" href="/src/style.css"></head><body data-tool="merge" data-lang="zh">
+  <header><a class="brand" href="/zh/merge-pdf/">PDF to MD <span>/ PDF 工具</span></a><nav class="locale" aria-label="语言"><a href="/merge-pdf/" lang="en" hreflang="en" >English</a><a href="/zh/merge-pdf/" lang="zh-CN" hreflang="zh-CN" aria-current="true">中文</a><a href="/ja/merge-pdf/" lang="ja" hreflang="ja" >日本語</a><a href="/de/merge-pdf/" lang="de" hreflang="de" >Deutsch</a></nav></header>
+  <main><nav class="tools" aria-label="PDF 工具"><a aria-current="page" href="/zh/merge-pdf/">合并 PDF</a><a  href="/zh/split-pdf/">拆分 PDF</a><a  href="/zh/rotate-pdf/">旋转 PDF</a></nav>
+    <div class="intro"><h1>合并 PDF</h1><p>按你选择的顺序，将多个 PDF 合并为一个文件。</p><p class="small">文件始终保留在你的设备。处理在浏览器内完成，不会上传文件。</p></div>
+    <noscript><p>请启用 JavaScript 处理 PDF。文件始终保留在你的设备。</p></noscript><section class="workbench" aria-labelledby="tool-title"><h2 id="tool-title">选择 PDF 文件</h2><form id="tool-form"><fieldset id="controls"><label class="upload" for="files">选择 PDF 文件<input id="files" name="files" type="file" accept=".pdf,application/pdf" multiple aria-describedby="limits"></label><p class="small" id="limits">限制：每个 PDF 20 MiB，累计 50 MiB，最多 50 个文件、共 500 页。不支持损坏或加密的 PDF。</p>
+      <h3>已选文件</h3><ol id="file-list"></ol><p id="empty">尚未选择文件。</p>
+
+
+      <button class="primary" id="run" type="submit" disabled>生成文件</button></fieldset><button class="secondary" id="cancel" type="button" hidden>取消</button></form>
+      <div class="status" id="status" role="status" aria-live="polite">选择 PDF 开始。</div><progress id="progress" max="100" value="0" hidden aria-label="正在处理…"></progress><a class="download" id="download" hidden>下载结果</a>
+    </section>
+    <nav class="contents" aria-label="本页内容"><p>本页内容</p><ul><li><a href="#how">使用方式</a></li><li><a href="#examples">输入后会得到什么？</a></li><li><a href="#capabilities">这个工具会改变什么</a></li><li><a href="#check-output">下载后检查这些内容</a></li><li><a href="#file-handling">文件、限额与取消操作</a></li><li><a href="#troubleshooting">结果不符合预期时</a></li><li><a href="#faq">常见问题</a></li><li><a href="#related">继续处理文档</a></li></ul></nav>
+    <section class="notes" id="how"><h2>使用方式</h2><ol class="steps"><li>选择两个或更多 PDF 文件。</li><li>使用箭头调整顺序，移除不需要的文件。</li><li>生成并下载合并后的 PDF，检查页面顺序。</li></ol></section>
+    <section class="notes" id="examples"><h2>输入后会得到什么？</h2><table><thead><tr><th scope="col">输入示例</th><th scope="col">下载结果</th></tr></thead><tbody><tr><td>先选 A.pdf（2 页），再选 B.pdf（3 页）</td><td>生成 5 页 PDF：A1、A2、B1、B2、B3。</td></tr><tr><td>将 B.pdf 移到 A.pdf 上方</td><td>顺序变为 B1、B2、B3、A1、A2。</td></tr><tr><td>A4 竖版 PDF 与横版 PDF</td><td>各页纸张大小和方向可能仍然不同。</td></tr></tbody></table></section>
+    <section class="notes" id="capabilities"><h2>这个工具会改变什么</h2><ul><li>箭头调整的是整个文件的顺序。各原文件内部页序保持不变，不能在这里逐页重排。</li><li>合并不会统一所有页面的纸张大小或方向。如需转正部分页面，可另用旋转 PDF 工具。</li><li>扫描页仍是扫描页。合并不会进行 OCR、移除空白页或优化文件体积。</li></ul></section>
+    <section class="notes" id="check-output"><h2>下载后检查这些内容</h2><ul><li>打开下载的 merged.pdf，核对总页数是否等于各输入文件页数之和。</li><li>检查文档之间的衔接位置，尤其是封面、附录和方向不同的页面。</li><li>测试重要链接和表单字段。已签名文档应另外保留原件。</li></ul><p class="small">请保留原文件。书签、表单、附件、无障碍标签和数字签名可能变化或丢失，使用前请检查结果。</p></section>
+    <section class="notes" id="file-handling"><h2>文件、限额与取消操作</h2><p>这三个工具无需注册或付费。PDF 在浏览器内处理，不会上传文件。结果通过新文件下载，所选原文件不会被覆盖。</p><p>工具不会添加水印，原页面已有的水印会保留在结果中。</p><p>不支持损坏或加密 PDF。即使阅读器打开时没有要求密码，加密文件也可能被拒绝；这里没有解锁或输入密码的步骤。</p><p>输入限制为每个 PDF 20 MiB、累计 50 MiB、最多 50 个文件和共 500 页。复杂文档仍可能超过设备可用内存。遇到限额时，减少文件数量或获取更小的源 PDF；不能先传入超限原件再处理。</p><p>取消会停止当前任务并保留已选文件。刷新、关闭页面或点击链接离开后，文件选择和设置会丢失。请保留原文件，以便重新选择。</p></section>
+    <section class="notes" id="troubleshooting"><h2>结果不符合预期时</h2><h3>“生成文件”不可用</h3><p>至少选择两个 PDF。再次选择文件会追加到列表，误加的文件可从列表移除。</p><h3>文档顺序不对</h3><p>在可见列表中上移或下移文件，然后重新生成。已经下载的 PDF 不会随设置自动更新。</p><h3>文件被拒绝</h3><p>检查文件是否为可正常打开、未加密且未超过限额的 PDF。本工具不能修复损坏文件或解锁密码保护文件。</p></section>
+    <section class="notes" id="faq"><h2>常见问题</h2><details><summary>能把某一页移到另一页前面吗？</summary><p>此合并工具只能调整整个文件的顺序，不能调整单个文件内部的页序。</p></details><details><summary>数字签名还能保持有效吗？</summary><p>不能这样假定。合并会生成新文档，请保留带签名的原件，并在使用合并副本前核对签名要求。</p></details><details><summary>合并后图片或文字会变模糊吗？</summary><p>工具会复制 PDF 页面，不提供图片压缩或分辨率设置，但不承诺所有文档特征都完全一致。下载后请检查小字、细线和图片。</p></details><details><summary>为什么新 PDF 没有变小？</summary><p>本工具合并文档，不压缩文档。输出体积可能变化，并不保证小于输入文件。</p></details></section>
+    <section class="notes" id="related"><h2>继续处理文档</h2><ul><li><a href="/zh/split-pdf/">拆分 PDF</a></li><li><a href="/zh/rotate-pdf/">旋转 PDF</a></li><li><a id="converter" href="https://pdf-to-md.app/zh/">将 PDF 转为 Markdown</a><p>请先下载处理结果，再到 PDF 转 Markdown 页面选择该文件。两个网站之间不会传输文件。</p></li><li><a href="https://pdf-to-md.app/zh/guides/scanned-pdf-ocr">扫描 PDF 的 OCR 处理指南</a></li><li><a href="https://pdf-to-md.app/zh/scanned-pdf-to-markdown">将扫描 PDF 转为 Markdown</a></li></ul></section>
+  </main><footer><p>基于 PDFCraftTool/pdfcraft 改编的独立工具，与 PDFCraft 无隶属关系。</p><p>下面提供完整源码、许可证、上游原文件和构建说明。</p><div class="source-links"><a id="source" href="https://github.com/liuyan-wjy/pdftomd-pdfcraft-tools" rel="noopener noreferrer" target="_blank">源代码 · AGPL-3.0</a><a href="/source.tar" download>下载对应版本源码</a><a href="https://github.com/PDFCraftTool/pdfcraft/tree/85bcc98bde29ffd3336bc8b63651c066e95ad2d0" target="_blank" rel="noopener noreferrer">PDFCraftTool/pdfcraft ↗</a></div></footer>
+<script type="module" src="/src/main.js"></script></body></html>

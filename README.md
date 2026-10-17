@@ -2,6 +2,10 @@
 
 An AGPL-3.0-only browser service offering `/merge-pdf/`, `/split-pdf/`, and `/rotate-pdf/`. PDF handling directly adapts selected PDFCraftTool/pdfcraft processors at commit `85bcc98bde29ffd3336bc8b63651c066e95ad2d0`; see [NOTICE.md](NOTICE.md) for source mappings and modifications. This is an independent modified project, not the official PDFCraft service.
 
+## Release sequence
+
+Publish the corresponding independent source revision and deploy the independent tool service with its matching source archive first. Verify the twelve canonical language/tool URLs on that deployment before releasing the main site's new links to those URLs. Keep the public source offer matched to the deployed tool build throughout this sequence.
+
 ## Run and build
 
 Requires Node.js 22.18+ and npm. No account, database, secret, external script or upload server is required.
@@ -12,14 +16,14 @@ npm test
 npm run e2e:install # once, if Chromium is not installed
 npm run e2e
 npm run dev
-# http://127.0.0.1:4174/merge-pdf/?lang=zh
+# http://127.0.0.1:4174/zh/merge-pdf/
 VITE_SOURCE_URL=https://github.com/liuyan-wjy/pdftomd-pdfcraft-tools/tree/YOUR_DEPLOYED_COMMIT npm run build
 npm run preview
 ```
 
-Deploy `dist/` as an independent static site with directory indexes, preserving `/source.tar` and `/licenses/`. Do not replace it with the proprietary/main-site source. Hosting, public repository creation, deployment and domain setup are intentionally outside this local service change. Set `VITE_SOURCE_URL` to the public source repository's immutable deployed commit URL before production deployment; absent that variable, the source link defaults to https://github.com/liuyan-wjy/pdftomd-pdfcraft-tools. The build always generates a matching complete source archive at `/source.tar`, so the source offer remains available independently of GitHub. To regenerate separately, run `npm run source:archive` after `npm ci`. The archive contains source, original upstream processors, license, attribution, tests, lockfile and build scripts; dependencies can be reproduced with `npm ci`.
+Deploy `dist/` as an independent static site with directory indexes, preserving `/source.tar` and `/licenses/`. Do not replace it with the proprietary/main-site source. The canonical origin is the existing independent Pages alias, `https://pdftomd-pdfcraft-tools.pages.dev`, defined once in `src/paths.js`. Set `VITE_SOURCE_URL` to the public source repository's immutable deployed commit URL before production deployment; absent that variable, the source link defaults to https://github.com/liuyan-wjy/pdftomd-pdfcraft-tools. The shared `src/page.js` template and locale records generate all 12 complete HTML entries via `scripts/generate-pages.js`, along with robots, sitemap and the root redirect rule. The browser script binds PDF interactions to that markup rather than rendering a second copy. The build always generates a matching complete source archive at `/source.tar`, so the source offer remains available independently of GitHub. To regenerate separately, run `npm run source:archive` after `npm ci`. The archive contains source, original upstream processors, license, attribution, tests, lockfile and build scripts; dependencies can be reproduced with `npm ci`.
 
-Languages: `?lang=en`, `?lang=zh`, `?lang=ja`, `?lang=de`. Unsupported values fall back to English; tool links retain language. Processing runs in a dedicated module Web Worker and does not upload file bytes. Cancel terminates the worker and keeps the original selection. There is no automatic download: users explicitly click the result link. The ordinary return link to https://pdf-to-md.app/ preserves the language; users download their result and select it in the converter themselves. No files cross between sites.
+Languages have canonical paths: English `/merge-pdf/`, Chinese `/zh/merge-pdf/`, Japanese `/ja/merge-pdf/`, and German `/de/merge-pdf/` (likewise for split and rotate). Ordinary language links retain the current tool. Old `?lang=en|zh|ja|de` links redirect to these paths in the browser; with JavaScript disabled, the original page still exposes its canonical URL and language links. Unsupported query values resolve to the current page language. Processing runs in a dedicated module Web Worker and does not upload file bytes. Cancel terminates the worker and keeps the original selection. There is no automatic download: users explicitly click the result link. The ordinary return link to https://pdf-to-md.app/ preserves the language; users download their result and select it in the converter themselves. No files cross between sites.
 
 ## Contracts and limits
 
@@ -32,8 +36,12 @@ Languages: `?lang=en`, `?lang=zh`, `?lang=ja`, `?lang=de`. Unsupported values fa
 
 ## Verification
 
-`npm test` generates and processes actual pdf-lib PDFs: merge order, split ZIP page counts and range order, rotation accumulation and selection, strict invalid ranges, damaged and encrypted document rejection, extension/signature validation and resource limits. The encrypted-boundary fixture uses a PDF with an `/Encrypt` trailer; it is not a password decryption or full cryptographic interoperability test. `npm run e2e` runs persistent Playwright browser tests for all three paths and four languages at 320px, file ordering and removal, downloaded PDFs/ZIPs, strict ranges and recovery, stale-result invalidation, cancellation and explicit download. Tests start an isolated production preview on port 4175. No test claims PDF fidelity across arbitrary third-party documents.
+`npm test` generates and processes actual pdf-lib PDFs: merge order, split ZIP page counts and range order, rotation accumulation and selection, strict invalid ranges, damaged and encrypted document rejection, extension/signature validation and resource limits. The encrypted-boundary fixture uses a PDF with an `/Encrypt` trailer; it is not a password decryption or full cryptographic interoperability test. `npm run e2e` runs persistent Playwright browser tests for all three paths and four languages at 320px, file ordering and removal, downloaded PDFs/ZIPs, strict ranges and recovery, stale-result invalidation, cancellation and explicit download, plus raw-HTTP HTML, JavaScript-disabled content, reciprocal hreflang, sitemap and legacy-language redirects. Tests start an isolated production preview on port 4175. No test claims PDF fidelity across arbitrary third-party documents.
 
 ## License
 
-AGPL-3.0-only. Keep the complete license, original source notices, modification notices and corresponding source available to users of deployed versions. Third-party package licenses accompany their packages and are copied into the production build. No production deployment is performed by this repository.
+AGPL-3.0-only. Keep the complete license, original source notices, modification notices and corresponding source available to users of deployed versions. Third-party package licenses accompany their packages and are copied into the production build. Publish corresponding source before deploying this service, then verify the source archive and language routes before releasing main-site links.
+
+## Local content expansion plan (2026-10-17)
+
+Keep the existing PDF controls and processing behavior. Extend each of the twelve static pages below the tool with practical examples, exact capabilities, an output checklist, file handling and limits, troubleshooting, task-specific FAQs and related tool/converter/OCR-guide links. Use the current build-time renderer and a single translated content record for each language; do not add dependencies or client-side rendering. Keep file-list styling scoped so normal lists and mobile tables remain readable. Re-run the existing PDF unit and browser journeys, plus a small static contract for section/link relationships; do not test marketing wording. The release review passed 19 Node tests and all 10 browser journeys, including production build, static SEO and actual PDF downloads.

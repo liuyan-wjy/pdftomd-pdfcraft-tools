@@ -28,29 +28,30 @@ test('12 localized tool pages fit at 320px with source and converter links', asy
   const errors = collectErrors(page);
   for (const lang of ['en', 'zh', 'ja', 'de']) {
     for (const tool of ['merge', 'split', 'rotate']) {
-      const response = await page.goto(`/${tool}-pdf/?lang=${lang}`);
+      const path = `${lang === 'en' ? '' : `/${lang}`}/${tool}-pdf/`;
+      const response = await page.goto(path);
       expect(response.status()).toBe(200);
       await expect(page.locator('#files')).toBeVisible();
       await expect(page.locator('html')).toHaveAttribute('lang', lang === 'zh' ? 'zh-CN' : lang);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-      await expect(page.locator('nav a[aria-current="page"]')).toHaveAttribute('href', `/${tool}-pdf/?lang=${lang}`);
+      await expect(page.locator('.tools a[aria-current="page"]')).toHaveAttribute('href', path);
       await expect(page.locator('#converter')).toHaveAttribute('href', `https://pdf-to-md.app/${lang === 'en' ? '' : `${lang}/`}`);
       await expect(page.locator('#source')).toHaveAttribute('href', /^https:\/\/github\.com\/liuyan-wjy\/pdftomd-pdfcraft-tools/);
       await expect(page.locator('a[download][href="/source.tar"]')).toBeVisible();
       await expect(page.locator('a[href*="PDFCraftTool/pdfcraft/tree/85bcc98"]')).toBeVisible();
-      for (const link of await page.locator('nav a').all()) await expect(link).toHaveAttribute('href', new RegExp(`\\?lang=${lang}$`));
+      for (const link of await page.locator('.tools a').all()) await expect(link).toHaveAttribute('href', new RegExp(`^${lang === 'en' ? '' : `/${lang}`}/(?:merge|split|rotate)-pdf/$`));
     }
   }
   expect(errors).toEqual([]);
 });
 
 test('language switch retains the current tool path', async ({ page }) => {
-  await page.goto('/split-pdf/?lang=ja');
-  await page.locator('#language').selectOption('de');
-  await expect(page).toHaveURL(/\/split-pdf\/\?lang=de$/);
+  await page.goto('/ja/split-pdf/');
+  await page.locator('header .locale a[hreflang="de"]').click();
+  await expect(page).toHaveURL(/\/de\/split-pdf\/$/);
   await expect(page.locator('html')).toHaveAttribute('lang', 'de');
-  await page.locator('nav a[href="/rotate-pdf/?lang=de"]').click();
-  await expect(page).toHaveURL(/\/rotate-pdf\/\?lang=de$/);
+  await page.locator('.tools a[href="/de/rotate-pdf/"]').click();
+  await expect(page).toHaveURL(/\/de\/rotate-pdf\/$/);
 });
 
 test('merge order and removal work with keyboard controls and an explicit PDF download', async ({ page }) => {
@@ -169,5 +170,5 @@ test('corresponding source archive includes reproducible source and browser test
     const size = parseInt(tar.subarray(offset + 124, offset + 136).toString().replace(/\0.*$/, '').trim() || '0', 8);
     offset += 512 + Math.ceil(size / 512) * 512;
   }
-  expect(names).toEqual(expect.arrayContaining(['src/pdf.js', 'src/worker.js', 'src/validation.js', 'upstream/merge.ts', 'upstream/split.ts', 'upstream/rotate.ts', 'package-lock.json', 'README.md', 'NOTICE.md', 'LICENSE', 'playwright.config.js', 'test/browser/tools.spec.js', 'scripts/source-archive.js']));
+  expect(names).toEqual(expect.arrayContaining(['src/pdf.js', 'src/worker.js', 'src/validation.js', 'upstream/merge.ts', 'upstream/split.ts', 'upstream/rotate.ts', 'package-lock.json', 'README.md', 'NOTICE.md', 'LICENSE', 'playwright.config.js', 'test/browser/tools.spec.js', 'scripts/source-archive.js', 'scripts/generate-pages.js', 'src/page.js', 'src/paths.js', 'zh/merge-pdf/index.html', 'ja/split-pdf/index.html', 'de/rotate-pdf/index.html', 'public/robots.txt', 'public/sitemap.xml', 'public/_redirects']));
 });

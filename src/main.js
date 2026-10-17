@@ -1,32 +1,19 @@
-import './style.css';
 import { locales } from './locales.js';
+import { toolPath } from './paths.js';
 import { validateFiles } from './validation.js';
 
-const requested = new URLSearchParams(location.search).get('lang');
-const lang = Object.hasOwn(locales, requested) ? requested : 'en';
+const lang = document.body.dataset.lang;
+const operation = document.body.dataset.tool;
 const t = locales[lang];
-const operation = location.pathname.startsWith('/split-pdf') ? 'split' : location.pathname.startsWith('/rotate-pdf') ? 'rotate' : 'merge';
-const source = import.meta.env.VITE_SOURCE_URL || 'https://github.com/liuyan-wjy/pdftomd-pdfcraft-tools';
-document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
-document.title = `${t[operation]} · ${t.brand}`;
-const app = document.querySelector('#app');
-app.innerHTML = `
-  <header><a class="brand" href="/merge-pdf/?lang=${lang}">PDF to MD <span>/ ${t.brand}</span></a><label class="locale">${t.language}<select id="language" aria-label="${t.language}"><option value="en">English</option><option value="zh">中文</option><option value="ja">日本語</option><option value="de">Deutsch</option></select></label></header>
-  <main><nav aria-label="${t.brand}">${['merge','split','rotate'].map((tool) => `<a ${tool === operation ? 'aria-current="page"' : ''} href="/${tool}-pdf/?lang=${lang}">${t[tool]}</a>`).join('')}</nav>
-    <div class="intro"><span class="eyebrow">PDFCRAFT / ${t.brand}</span><h1>${t[operation]}</h1><p>${t.privacy}</p></div>
-    <section class="workbench" aria-labelledby="tool-title"><h2 id="tool-title">${t.choose}</h2><form id="tool-form"><fieldset id="controls"><label class="upload" for="files">${t.choose}<input id="files" name="files" type="file" accept=".pdf,application/pdf" ${operation === 'merge' ? 'multiple' : ''} aria-describedby="limits"></label><p class="small" id="limits">${t.limits}</p>
-      <h3>${t.files}</h3><ol id="file-list"></ol><p id="empty">${t.empty}</p>
-      ${operation !== 'merge' ? `<label class="field" for="ranges">${t.range}<input id="ranges" name="ranges" type="text" placeholder="1-3,5" maxlength="4000" ${operation === 'split' ? 'required' : ''} aria-describedby="range-help"></label><p class="small" id="range-help">${operation === 'split' ? t.rangeSplit : t.rangeRotate}</p>` : ''}
-      ${operation === 'rotate' ? `<label class="field" for="angle">${t.angle}<select id="angle" name="angle"><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></label>` : ''}
-      <button class="primary" id="run" type="submit" disabled>${t.run}</button></fieldset><button class="secondary" id="cancel" type="button" hidden>${t.cancel}</button></form>
-      <div class="status" id="status" role="status" aria-live="polite">${t.ready}</div><progress id="progress" max="100" value="0" hidden aria-label="${t.busy}"></progress><a class="download" id="download" hidden>${t.download}</a>
-    </section><section class="notes"><h2>${t.how}</h2><p>${t[`${operation}Help`]}</p><p>${t.warning}</p><p><a id="converter" href="https://pdf-to-md.app/${lang === 'en' ? '' : `${lang}/`}">${t.converter}</a></p><p>${t.converterHelp}</p></section>
-  </main><footer><p>${t.credit}</p><p>${t.sourceNote}</p><div class="source-links"><a id="source" rel="noopener noreferrer" target="_blank">${t.source}</a><a href="/source.tar" download>${t.archive}</a><a href="https://github.com/PDFCraftTool/pdfcraft/tree/85bcc98bde29ffd3336bc8b63651c066e95ad2d0" target="_blank" rel="noopener noreferrer">PDFCraftTool/pdfcraft ↗</a></div></footer>`;
-const sourceLink = document.querySelector('#source');
-try { const url = new URL(source); if (url.protocol === 'https:') sourceLink.href = url.href; } catch { /* Keep invalid build configuration non-clickable. */ }
-const language = document.querySelector('#language');
-language.value = lang;
-language.onchange = () => { const url = new URL(location.href); url.searchParams.set('lang', language.value); location.href = url.href; };
+const query = new URLSearchParams(location.search);
+if (query.has('lang')) {
+  const requested = query.get('lang');
+  const target = new URL(toolPath(operation, Object.hasOwn(locales, requested) ? requested : lang), location.origin);
+  query.delete('lang');
+  target.search = query.toString();
+  target.hash = location.hash;
+  location.replace(target.href);
+}
 const input = document.querySelector('#files');
 const list = document.querySelector('#file-list');
 const run = document.querySelector('#run');

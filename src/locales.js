@@ -39,11 +39,30 @@ export const locales = {
     "operation": "Unknown tool.",
     "sourceNote": "The complete source, license, upstream originals and build instructions are available below.",
     "how": "How it works",
-    "mergeHelp": "Add PDFs, adjust their order with the arrows, then create one new PDF.",
-    "splitHelp": "Select one PDF and enter comma-separated ranges. Each range becomes a separate PDF inside one ZIP.",
-    "rotateHelp": "Select one PDF, choose an angle, and optionally enter the pages to rotate. Existing rotation is preserved and increased.",
     "converter": "Convert PDF to Markdown",
-    "converterHelp": "Download your result first, then select it in the PDF-to-Markdown converter. Files are not transferred between sites."
+    "converterHelp": "Download your result first, then select it in the PDF-to-Markdown converter. Files are not transferred between sites.",
+    "mergeIntro": "Combine PDFs into one document in the order you choose.",
+    "splitIntro": "Extract the pages you need into separate PDFs, ready to download together.",
+    "rotateIntro": "Turn sideways PDF pages upright without changing the page order.",
+    "mergeDescription": "Merge PDF files into one document in your browser. Choose the file order, remove unwanted files and download a new PDF. No file uploads or account required.",
+    "splitDescription": "Split a PDF by page ranges into separate PDF files in one ZIP. Choose ranges such as 1-3,5 and download the result. Files stay in your browser.",
+    "rotateDescription": "Rotate all or selected PDF pages by 90, 180 or 270 degrees. Keep the page order and download a new PDF. Your files are processed locally in the browser.",
+    "mergeSteps": [
+      "Choose two or more PDF files.",
+      "Use the arrows to arrange them; remove any you do not need.",
+      "Create the merged PDF, download it and check the page order."
+    ],
+    "splitSteps": [
+      "Choose one PDF file.",
+      "Enter ranges such as 1-3,5. Each range becomes a separate PDF.",
+      "Create and download the ZIP, then check the extracted PDFs."
+    ],
+    "rotateSteps": [
+      "Choose one PDF file and a clockwise angle.",
+      "Leave the range blank for all pages, or enter ranges such as 1-3,5.",
+      "Create the PDF, download it and check the page orientation."
+    ],
+    "javascript": "Enable JavaScript to process PDFs. Your files stay on this device."
   },
   "zh": {
     "brand": "PDF 工具",
@@ -85,11 +104,30 @@ export const locales = {
     "operation": "未知工具。",
     "sourceNote": "下面提供完整源码、许可证、上游原文件和构建说明。",
     "how": "使用方式",
-    "mergeHelp": "添加 PDF，用箭头调整顺序，然后生成一个新 PDF。",
-    "splitHelp": "选择一个 PDF 并输入用逗号分隔的页码范围，每个范围各生成一个 PDF，统一打包为 ZIP。",
-    "rotateHelp": "选择一个 PDF、旋转角度，可指定页码。旋转角度会叠加到原有方向。",
     "converter": "将 PDF 转为 Markdown",
-    "converterHelp": "请先下载处理结果，再到 PDF 转 Markdown 页面选择该文件。两个网站之间不会传输文件。"
+    "converterHelp": "请先下载处理结果，再到 PDF 转 Markdown 页面选择该文件。两个网站之间不会传输文件。",
+    "mergeIntro": "按你选择的顺序，将多个 PDF 合并为一个文件。",
+    "splitIntro": "提取需要的页面，生成多个 PDF，一次打包下载。",
+    "rotateIntro": "把横着的 PDF 页面转正，并保留原有页码顺序。",
+    "mergeDescription": "在浏览器中将多个 PDF 合并为一个文件。先调整文件顺序、移除不需要的文件，再生成并下载新的 PDF。无需上传或注册账号。",
+    "splitDescription": "按页码范围拆分 PDF，每个范围生成独立文件，统一打包为 ZIP 下载。支持 1-3,5 等范围，文件在浏览器内处理，无需上传。",
+    "rotateDescription": "将全部或指定 PDF 页面顺时针旋转 90、180 或 270 度，保留页面顺序并下载新文件。文件在浏览器内处理，无需上传。",
+    "mergeSteps": [
+      "选择两个或更多 PDF 文件。",
+      "使用箭头调整顺序，移除不需要的文件。",
+      "生成并下载合并后的 PDF，检查页面顺序。"
+    ],
+    "splitSteps": [
+      "选择一个 PDF 文件。",
+      "输入 1-3,5 等页码范围，每个范围各生成一个 PDF。",
+      "生成并下载 ZIP，解压后检查各个 PDF。"
+    ],
+    "rotateSteps": [
+      "选择一个 PDF 文件和顺时针旋转角度。",
+      "页码范围留空表示全部页面，也可输入 1-3,5。",
+      "生成并下载新 PDF，检查页面方向。"
+    ],
+    "javascript": "请启用 JavaScript 处理 PDF。文件始终保留在你的设备。"
   },
   "ja": {
     "brand": "PDF ツール",
@@ -131,11 +169,30 @@ export const locales = {
     "operation": "不明なツールです。",
     "sourceNote": "完全なソース、ライセンス、上流の原本、ビルド手順を以下から取得できます。",
     "how": "使い方",
-    "mergeHelp": "PDF を追加し、矢印で順番を調整してから新しい PDF を作成します。",
-    "splitHelp": "PDF を 1 つ選び、コンマ区切りで範囲を入力します。範囲ごとの PDF を ZIP にまとめます。",
-    "rotateHelp": "PDF を 1 つ選び、角度と必要に応じてページを指定します。元の回転角度に加算します。",
     "converter": "PDF を Markdown に変換",
-    "converterHelp": "結果をダウンロードしてから、PDF→Markdown 変換ページで選択してください。サイト間でファイルを転送しません。"
+    "converterHelp": "結果をダウンロードしてから、PDF→Markdown 変換ページで選択してください。サイト間でファイルを転送しません。",
+    "mergeIntro": "選んだ順番で、複数の PDF を 1 つの文書にまとめます。",
+    "splitIntro": "必要なページを別々の PDF に抽出し、まとめてダウンロードします。",
+    "rotateIntro": "横向きの PDF ページを、ページ順を変えずに正しい向きに回転します。",
+    "mergeDescription": "ブラウザー内で複数の PDF を 1 つに結合します。ファイルの順序を調整し、不要なものを削除してから新しい PDF をダウンロード。アップロードや登録は不要です。",
+    "splitDescription": "PDF をページ範囲で分割し、個別の PDF を 1 つの ZIP にまとめてダウンロードします。1-3,5 などの範囲を指定でき、ファイルはブラウザー内で処理します。",
+    "rotateDescription": "PDF の全ページまたは指定ページを 90・180・270 度回転します。ページ順を保って新しい PDF をダウンロード。ファイルはブラウザー内で処理し、アップロードしません。",
+    "mergeSteps": [
+      "2 つ以上の PDF ファイルを選択します。",
+      "矢印で順番を調整し、不要なファイルを削除します。",
+      "結合した PDF を作成・ダウンロードし、ページ順を確認します。"
+    ],
+    "splitSteps": [
+      "PDF を 1 つ選択します。",
+      "1-3,5 のように範囲を指定します。範囲ごとに PDF ができます。",
+      "ZIP を作成・ダウンロードし、展開した PDF を確認します。"
+    ],
+    "rotateSteps": [
+      "PDF を 1 つ選び、時計回りの角度を指定します。",
+      "空欄で全ページ、または 1-3,5 のように範囲を指定します。",
+      "新しい PDF を作成・ダウンロードし、向きを確認します。"
+    ],
+    "javascript": "PDF の処理には JavaScript を有効にしてください。ファイルは端末内に留まります。"
   },
   "de": {
     "brand": "PDF-Werkzeuge",
@@ -177,10 +234,29 @@ export const locales = {
     "operation": "Unbekanntes Werkzeug.",
     "sourceNote": "Vollständiger Quellcode, Lizenz, ursprüngliche Dateien und Bauanleitung sind unten verfügbar.",
     "how": "So funktioniert es",
-    "mergeHelp": "PDFs hinzufügen, mit den Pfeilen sortieren und eine neue PDF erstellen.",
-    "splitHelp": "Eine PDF auswählen und Bereiche durch Kommas trennen. Jeder Bereich wird eine PDF in einer ZIP-Datei.",
-    "rotateHelp": "Eine PDF und einen Winkel wählen, optional Seiten angeben. Die Drehung wird zum bisherigen Winkel addiert.",
     "converter": "PDF in Markdown umwandeln",
-    "converterHelp": "Laden Sie das Ergebnis zuerst herunter und wählen Sie es dann im PDF-zu-Markdown-Konverter aus. Zwischen den Websites werden keine Dateien übertragen."
+    "converterHelp": "Laden Sie das Ergebnis zuerst herunter und wählen Sie es dann im PDF-zu-Markdown-Konverter aus. Zwischen den Websites werden keine Dateien übertragen.",
+    "mergeIntro": "Führen Sie mehrere PDFs in der gewünschten Reihenfolge zu einem Dokument zusammen.",
+    "splitIntro": "Extrahieren Sie die benötigten Seiten als separate PDFs und laden Sie sie zusammen herunter.",
+    "rotateIntro": "Drehen Sie quer liegende PDF-Seiten, ohne die Seitenreihenfolge zu ändern.",
+    "mergeDescription": "PDFs im Browser zu einem Dokument zusammenführen. Dateien sortieren oder entfernen, dann die neue PDF herunterladen. Ohne Upload und ohne Konto.",
+    "splitDescription": "PDF nach Seitenbereichen in einzelne PDFs aufteilen und als ZIP herunterladen. Bereiche wie 1-3,5 auswählen. Ihre Dateien bleiben im Browser.",
+    "rotateDescription": "Alle oder ausgewählte PDF-Seiten um 90, 180 oder 270 Grad drehen. Seitenreihenfolge beibehalten und eine neue PDF herunterladen. Ohne Upload.",
+    "mergeSteps": [
+      "Wählen Sie mindestens zwei PDFs aus.",
+      "Sortieren Sie sie mit den Pfeilen und entfernen Sie unerwünschte Dateien.",
+      "Erstellen Sie die PDF, laden Sie sie herunter und prüfen Sie die Seitenreihenfolge."
+    ],
+    "splitSteps": [
+      "Wählen Sie eine PDF aus.",
+      "Geben Sie Bereiche wie 1-3,5 an. Jeder Bereich wird eine eigene PDF.",
+      "Erstellen und laden Sie die ZIP herunter. Prüfen Sie die entpackten PDFs."
+    ],
+    "rotateSteps": [
+      "Wählen Sie eine PDF und einen Drehwinkel im Uhrzeigersinn aus.",
+      "Lassen Sie den Bereich für alle Seiten leer oder geben Sie z. B. 1-3,5 ein.",
+      "Erstellen und laden Sie die PDF herunter. Prüfen Sie die Seitenausrichtung."
+    ],
+    "javascript": "Aktivieren Sie JavaScript zum Verarbeiten von PDFs. Die Dateien bleiben auf Ihrem Gerät."
   }
 };
