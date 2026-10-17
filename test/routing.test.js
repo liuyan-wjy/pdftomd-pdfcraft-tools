@@ -17,3 +17,9 @@ test('independent Worker claims only tool prefixes and its resource namespace', 
   assert.equal(vite.base, '/');
   assert.equal(vite.build.assetsDir, 'pdf-tools/assets');
 });
+
+test('static responses prevent injected network scripts under the local-only CSP', async () => {
+  const headers = await readFile(new URL('../public/_headers', import.meta.url), 'utf8');
+  assert.match(headers, /^  Cache-Control: public, no-transform$/m);
+  assert.match(headers, /connect-src 'none'/);
+});
