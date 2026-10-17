@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>合并 PDF · PDF to MD</title><meta name="description" content="在浏览器中将多个 PDF 合并为一个文件。先调整文件顺序、移除不需要的文件，再生成并下载新的 PDF。无需上传或注册账号。">
-<link rel="canonical" href="https://pdftomd-pdfcraft-tools.pages.dev/zh/merge-pdf/">
-<link rel="alternate" hreflang="en" href="https://pdftomd-pdfcraft-tools.pages.dev/merge-pdf/">
-<link rel="alternate" hreflang="zh-CN" href="https://pdftomd-pdfcraft-tools.pages.dev/zh/merge-pdf/">
-<link rel="alternate" hreflang="ja" href="https://pdftomd-pdfcraft-tools.pages.dev/ja/merge-pdf/">
-<link rel="alternate" hreflang="de" href="https://pdftomd-pdfcraft-tools.pages.dev/de/merge-pdf/">
-<link rel="alternate" hreflang="x-default" href="https://pdftomd-pdfcraft-tools.pages.dev/merge-pdf/">
+<link rel="canonical" href="https://pdf-to-md.app/zh/merge-pdf/">
+<link rel="alternate" hreflang="en" href="https://pdf-to-md.app/merge-pdf/">
+<link rel="alternate" hreflang="zh-CN" href="https://pdf-to-md.app/zh/merge-pdf/">
+<link rel="alternate" hreflang="ja" href="https://pdf-to-md.app/ja/merge-pdf/">
+<link rel="alternate" hreflang="de" href="https://pdf-to-md.app/de/merge-pdf/">
+<link rel="alternate" hreflang="x-default" href="https://pdf-to-md.app/merge-pdf/">
 <link rel="stylesheet" href="/src/style.css"></head><body data-tool="merge" data-lang="zh">
-  <header><a class="brand" href="/zh/merge-pdf/">PDF to MD <span>/ PDF 工具</span></a><nav class="locale" aria-label="语言"><a href="/merge-pdf/" lang="en" hreflang="en" >English</a><a href="/zh/merge-pdf/" lang="zh-CN" hreflang="zh-CN" aria-current="true">中文</a><a href="/ja/merge-pdf/" lang="ja" hreflang="ja" >日本語</a><a href="/de/merge-pdf/" lang="de" hreflang="de" >Deutsch</a></nav></header>
+  <header><a class="brand" href="https://pdf-to-md.app/zh/">PDF to MD <span>/ PDF 工具</span></a><nav class="locale" aria-label="语言"><a href="/merge-pdf/" lang="en" hreflang="en" >English</a><a href="/zh/merge-pdf/" lang="zh-CN" hreflang="zh-CN" aria-current="true">中文</a><a href="/ja/merge-pdf/" lang="ja" hreflang="ja" >日本語</a><a href="/de/merge-pdf/" lang="de" hreflang="de" >Deutsch</a></nav></header>
   <main><nav class="tools" aria-label="PDF 工具"><a aria-current="page" href="/zh/merge-pdf/">合并 PDF</a><a  href="/zh/split-pdf/">拆分 PDF</a><a  href="/zh/rotate-pdf/">旋转 PDF</a></nav>
     <div class="intro"><h1>合并 PDF</h1><p>按你选择的顺序，将多个 PDF 合并为一个文件。</p><p class="small">文件始终保留在你的设备。处理在浏览器内完成，不会上传文件。</p></div>
     <noscript><p>请启用 JavaScript 处理 PDF。文件始终保留在你的设备。</p></noscript><section class="workbench" aria-labelledby="tool-title"><h2 id="tool-title">选择 PDF 文件</h2><form id="tool-form"><fieldset id="controls"><label class="upload" for="files">选择 PDF 文件<input id="files" name="files" type="file" accept=".pdf,application/pdf" multiple aria-describedby="limits"></label><p class="small" id="limits">限制：每个 PDF 20 MiB，累计 50 MiB，最多 50 个文件、共 500 页。不支持损坏或加密的 PDF。</p>
@@ -26,6 +26,6 @@
     <section class="notes" id="file-handling"><h2>文件、限额与取消操作</h2><p>这三个工具无需注册或付费。PDF 在浏览器内处理，不会上传文件。结果通过新文件下载，所选原文件不会被覆盖。</p><p>工具不会添加水印，原页面已有的水印会保留在结果中。</p><p>不支持损坏或加密 PDF。即使阅读器打开时没有要求密码，加密文件也可能被拒绝；这里没有解锁或输入密码的步骤。</p><p>输入限制为每个 PDF 20 MiB、累计 50 MiB、最多 50 个文件和共 500 页。复杂文档仍可能超过设备可用内存。遇到限额时，减少文件数量或获取更小的源 PDF；不能先传入超限原件再处理。</p><p>取消会停止当前任务并保留已选文件。刷新、关闭页面或点击链接离开后，文件选择和设置会丢失。请保留原文件，以便重新选择。</p></section>
     <section class="notes" id="troubleshooting"><h2>结果不符合预期时</h2><h3>“生成文件”不可用</h3><p>至少选择两个 PDF。再次选择文件会追加到列表，误加的文件可从列表移除。</p><h3>文档顺序不对</h3><p>在可见列表中上移或下移文件，然后重新生成。已经下载的 PDF 不会随设置自动更新。</p><h3>文件被拒绝</h3><p>检查文件是否为可正常打开、未加密且未超过限额的 PDF。本工具不能修复损坏文件或解锁密码保护文件。</p></section>
     <section class="notes" id="faq"><h2>常见问题</h2><details><summary>能把某一页移到另一页前面吗？</summary><p>此合并工具只能调整整个文件的顺序，不能调整单个文件内部的页序。</p></details><details><summary>数字签名还能保持有效吗？</summary><p>不能这样假定。合并会生成新文档，请保留带签名的原件，并在使用合并副本前核对签名要求。</p></details><details><summary>合并后图片或文字会变模糊吗？</summary><p>工具会复制 PDF 页面，不提供图片压缩或分辨率设置，但不承诺所有文档特征都完全一致。下载后请检查小字、细线和图片。</p></details><details><summary>为什么新 PDF 没有变小？</summary><p>本工具合并文档，不压缩文档。输出体积可能变化，并不保证小于输入文件。</p></details></section>
-    <section class="notes" id="related"><h2>继续处理文档</h2><ul><li><a href="/zh/split-pdf/">拆分 PDF</a></li><li><a href="/zh/rotate-pdf/">旋转 PDF</a></li><li><a id="converter" href="https://pdf-to-md.app/zh/">将 PDF 转为 Markdown</a><p>请先下载处理结果，再到 PDF 转 Markdown 页面选择该文件。两个网站之间不会传输文件。</p></li><li><a href="https://pdf-to-md.app/zh/guides/scanned-pdf-ocr">扫描 PDF 的 OCR 处理指南</a></li><li><a href="https://pdf-to-md.app/zh/scanned-pdf-to-markdown">将扫描 PDF 转为 Markdown</a></li></ul></section>
-  </main><footer><p>基于 PDFCraftTool/pdfcraft 改编的独立工具，与 PDFCraft 无隶属关系。</p><p>下面提供完整源码、许可证、上游原文件和构建说明。</p><div class="source-links"><a id="source" href="https://github.com/liuyan-wjy/pdftomd-pdfcraft-tools" rel="noopener noreferrer" target="_blank">源代码 · AGPL-3.0</a><a href="/source.tar" download>下载对应版本源码</a><a href="https://github.com/PDFCraftTool/pdfcraft/tree/85bcc98bde29ffd3336bc8b63651c066e95ad2d0" target="_blank" rel="noopener noreferrer">PDFCraftTool/pdfcraft ↗</a></div></footer>
+    <section class="notes" id="related"><h2>继续处理文档</h2><ul><li><a href="/zh/split-pdf/">拆分 PDF</a></li><li><a href="/zh/rotate-pdf/">旋转 PDF</a></li><li><a id="converter" href="https://pdf-to-md.app/zh/">将 PDF 转为 Markdown</a><p>请先下载处理结果，再到 PDF 转 Markdown 页面选择该文件。文件不会自动传给转换器。</p></li><li><a href="https://pdf-to-md.app/zh/guides/scanned-pdf-ocr">扫描 PDF 的 OCR 处理指南</a></li><li><a href="https://pdf-to-md.app/zh/scanned-pdf-to-markdown">将扫描 PDF 转为 Markdown</a></li></ul></section>
+  </main><footer><p>基于 PDFCraftTool/pdfcraft 改编的独立工具，与 PDFCraft 无隶属关系。</p><p>下面提供完整源码、许可证、上游原文件和构建说明。</p><div class="source-links"><a id="source" href="https://github.com/liuyan-wjy/pdftomd-pdfcraft-tools" rel="noopener noreferrer" target="_blank">源代码 · AGPL-3.0</a><a href="/pdf-tools/source.tar" download>下载对应版本源码</a><a href="https://github.com/PDFCraftTool/pdfcraft/tree/85bcc98bde29ffd3336bc8b63651c066e95ad2d0" target="_blank" rel="noopener noreferrer">PDFCraftTool/pdfcraft ↗</a></div></footer>
 <script type="module" src="/src/main.js"></script></body></html>

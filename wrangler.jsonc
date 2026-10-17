@@ -1,0 +1,64 @@
+{
+  "name": "pdftomd-pdf-tools",
+  "compatibility_date": "2026-10-18",
+  "workers_dev": false,
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "routes": [
+    {
+      "pattern": "pdf-to-md.app/merge-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/split-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/rotate-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/zh/merge-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/zh/split-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/zh/rotate-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/ja/merge-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/ja/split-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/ja/rotate-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/de/merge-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/de/split-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/de/rotate-pdf*",
+      "zone_name": "pdf-to-md.app"
+    },
+    {
+      "pattern": "pdf-to-md.app/pdf-tools/*",
+      "zone_name": "pdf-to-md.app"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { locales } from '../../src/locales.js';
-const origin = 'https://pdftomd-pdfcraft-tools.pages.dev';
+const origin = 'https://pdf-to-md.app';
 const languages = ['en', 'zh', 'ja', 'de'];
 const tools = ['merge', 'split', 'rotate'];
 const expectedPath = (lang, tool) => `${lang === 'en' ? '' : `/${lang}`}/${tool}-pdf/`;
@@ -46,15 +46,15 @@ test('12 pages expose localized content, canonical and reciprocal alternates in 
   await context.close();
 });
 
-test('sitemap contains only the 12 canonical tool pages and root redirects to merge', async ({ page, request }) => {
-  const response = await request.get('/sitemap.xml');
+test('namespaced sitemap contains the 12 canonical tool pages; legacy standalone root remains compatible', async ({ page, request }) => {
+  const response = await request.get('/pdf-tools/sitemap.xml');
   expect(response.status()).toBe(200);
   const xml = await response.text();
   const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   expect(locations.sort()).toEqual(languages.flatMap((lang) => tools.map((tool) => `${origin}${expectedPath(lang, tool)}`)).sort());
   const robots = await request.get('/robots.txt');
   expect(robots.status()).toBe(200);
-  expect(await robots.text()).toContain(`Sitemap: ${origin}/sitemap.xml`);
+  expect(await robots.text()).toContain(`Sitemap: ${origin}/pdf-tools/sitemap.xml`);
   const root = await request.get('/');
   const html = await root.text();
   expect(html).toContain(`<link rel="canonical" href="${origin}/merge-pdf/">`);

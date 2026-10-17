@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>拆分 PDF · PDF to MD</title><meta name="description" content="按页码范围拆分 PDF，每个范围生成独立文件，统一打包为 ZIP 下载。支持 1-3,5 等范围，文件在浏览器内处理，无需上传。">
-<link rel="canonical" href="https://pdftomd-pdfcraft-tools.pages.dev/zh/split-pdf/">
-<link rel="alternate" hreflang="en" href="https://pdftomd-pdfcraft-tools.pages.dev/split-pdf/">
-<link rel="alternate" hreflang="zh-CN" href="https://pdftomd-pdfcraft-tools.pages.dev/zh/split-pdf/">
-<link rel="alternate" hreflang="ja" href="https://pdftomd-pdfcraft-tools.pages.dev/ja/split-pdf/">
-<link rel="alternate" hreflang="de" href="https://pdftomd-pdfcraft-tools.pages.dev/de/split-pdf/">
-<link rel="alternate" hreflang="x-default" href="https://pdftomd-pdfcraft-tools.pages.dev/split-pdf/">
+<link rel="canonical" href="https://pdf-to-md.app/zh/split-pdf/">
+<link rel="alternate" hreflang="en" href="https://pdf-to-md.app/split-pdf/">
+<link rel="alternate" hreflang="zh-CN" href="https://pdf-to-md.app/zh/split-pdf/">
+<link rel="alternate" hreflang="ja" href="https://pdf-to-md.app/ja/split-pdf/">
+<link rel="alternate" hreflang="de" href="https://pdf-to-md.app/de/split-pdf/">
+<link rel="alternate" hreflang="x-default" href="https://pdf-to-md.app/split-pdf/">
 <link rel="stylesheet" href="/src/style.css"></head><body data-tool="split" data-lang="zh">
-  <header><a class="brand" href="/zh/merge-pdf/">PDF to MD <span>/ PDF 工具</span></a><nav class="locale" aria-label="语言"><a href="/split-pdf/" lang="en" hreflang="en" >English</a><a href="/zh/split-pdf/" lang="zh-CN" hreflang="zh-CN" aria-current="true">中文</a><a href="/ja/split-pdf/" lang="ja" hreflang="ja" >日本語</a><a href="/de/split-pdf/" lang="de" hreflang="de" >Deutsch</a></nav></header>
+  <header><a class="brand" href="https://pdf-to-md.app/zh/">PDF to MD <span>/ PDF 工具</span></a><nav class="locale" aria-label="语言"><a href="/split-pdf/" lang="en" hreflang="en" >English</a><a href="/zh/split-pdf/" lang="zh-CN" hreflang="zh-CN" aria-current="true">中文</a><a href="/ja/split-pdf/" lang="ja" hreflang="ja" >日本語</a><a href="/de/split-pdf/" lang="de" hreflang="de" >Deutsch</a></nav></header>
   <main><nav class="tools" aria-label="PDF 工具"><a  href="/zh/merge-pdf/">合并 PDF</a><a aria-current="page" href="/zh/split-pdf/">拆分 PDF</a><a  href="/zh/rotate-pdf/">旋转 PDF</a></nav>
     <div class="intro"><h1>拆分 PDF</h1><p>提取需要的页面，生成多个 PDF，一次打包下载。</p><p class="small">文件始终保留在你的设备。处理在浏览器内完成，不会上传文件。</p></div>
     <noscript><p>请启用 JavaScript 处理 PDF。文件始终保留在你的设备。</p></noscript><section class="workbench" aria-labelledby="tool-title"><h2 id="tool-title">选择 PDF 文件</h2><form id="tool-form"><fieldset id="controls"><label class="upload" for="files">选择 PDF 文件<input id="files" name="files" type="file" accept=".pdf,application/pdf"  aria-describedby="limits"></label><p class="small" id="limits">限制：每个 PDF 20 MiB，累计 50 MiB，最多 50 个文件、共 500 页。不支持损坏或加密的 PDF。</p>
@@ -26,6 +26,6 @@
     <section class="notes" id="file-handling"><h2>文件、限额与取消操作</h2><p>这三个工具无需注册或付费。PDF 在浏览器内处理，不会上传文件。结果通过新文件下载，所选原文件不会被覆盖。</p><p>工具不会添加水印，原页面已有的水印会保留在结果中。</p><p>不支持损坏或加密 PDF。即使阅读器打开时没有要求密码，加密文件也可能被拒绝；这里没有解锁或输入密码的步骤。</p><p>输入限制为每个 PDF 20 MiB、累计 50 MiB、最多 50 个文件和共 500 页。复杂文档仍可能超过设备可用内存。遇到限额时，减少文件数量或获取更小的源 PDF；不能先传入超限原件再处理。</p><p>取消会停止当前任务并保留已选文件。刷新、关闭页面或点击链接离开后，文件选择和设置会丢失。请保留原文件，以便重新选择。</p></section>
     <section class="notes" id="troubleshooting"><h2>结果不符合预期时</h2><h3>范围被拒绝</h3><p>请使用半角数字、半角连字符 - 和半角逗号 ,，例如 1-3,5；不支持全角逗号或顿号。不能使用 0、倒序范围、重复页面或超过文件总页数的数字。</p><h3>提取到了错误章节</h3><p>从文件最前面的实际页面开始计数，包括封面和前言，不要只看页面印刷的编号。</p><h3>原件或结果体积超限</h3><p>超过 20 MiB 的原件不能先传入本工具拆分。请获取更小的源文件；如果生成分片超出 50 MiB，可减少输出范围。</p></section>
     <section class="notes" id="faq"><h2>常见问题</h2><details><summary>可以只提取一页吗？</summary><p>可以。输入该页的实际位置，例如 5。即使只生成一个单页 PDF，也会放在 ZIP 中下载。</p></details><details><summary>可以按目标文件体积拆分吗？</summary><p>不能。这里按页码范围拆分，不按指定的 MiB 数拆分；体积还受图片和其他共享资源影响。</p></details><details><summary>没有选中的页面会怎么样？</summary><p>它们不会出现在下载的分片中，原 PDF 仍保留全部页面。</p></details><details><summary>分片会保留书签和表单吗？</summary><p>不能依赖这一点。页面提取可能改变文档级功能，请逐个检查所需的书签、链接和字段。</p></details></section>
-    <section class="notes" id="related"><h2>继续处理文档</h2><ul><li><a href="/zh/merge-pdf/">合并 PDF</a></li><li><a href="/zh/rotate-pdf/">旋转 PDF</a></li><li><a id="converter" href="https://pdf-to-md.app/zh/">将 PDF 转为 Markdown</a><p>请先下载处理结果，再到 PDF 转 Markdown 页面选择该文件。两个网站之间不会传输文件。</p></li><li><a href="https://pdf-to-md.app/zh/guides/scanned-pdf-ocr">扫描 PDF 的 OCR 处理指南</a></li><li><a href="https://pdf-to-md.app/zh/scanned-pdf-to-markdown">将扫描 PDF 转为 Markdown</a></li></ul></section>
-  </main><footer><p>基于 PDFCraftTool/pdfcraft 改编的独立工具，与 PDFCraft 无隶属关系。</p><p>下面提供完整源码、许可证、上游原文件和构建说明。</p><div class="source-links"><a id="source" href="https://github.com/liuyan-wjy/pdftomd-pdfcraft-tools" rel="noopener noreferrer" target="_blank">源代码 · AGPL-3.0</a><a href="/source.tar" download>下载对应版本源码</a><a href="https://github.com/PDFCraftTool/pdfcraft/tree/85bcc98bde29ffd3336bc8b63651c066e95ad2d0" target="_blank" rel="noopener noreferrer">PDFCraftTool/pdfcraft ↗</a></div></footer>
+    <section class="notes" id="related"><h2>继续处理文档</h2><ul><li><a href="/zh/merge-pdf/">合并 PDF</a></li><li><a href="/zh/rotate-pdf/">旋转 PDF</a></li><li><a id="converter" href="https://pdf-to-md.app/zh/">将 PDF 转为 Markdown</a><p>请先下载处理结果，再到 PDF 转 Markdown 页面选择该文件。文件不会自动传给转换器。</p></li><li><a href="https://pdf-to-md.app/zh/guides/scanned-pdf-ocr">扫描 PDF 的 OCR 处理指南</a></li><li><a href="https://pdf-to-md.app/zh/scanned-pdf-to-markdown">将扫描 PDF 转为 Markdown</a></li></ul></section>
+  </main><footer><p>基于 PDFCraftTool/pdfcraft 改编的独立工具，与 PDFCraft 无隶属关系。</p><p>下面提供完整源码、许可证、上游原文件和构建说明。</p><div class="source-links"><a id="source" href="https://github.com/liuyan-wjy/pdftomd-pdfcraft-tools" rel="noopener noreferrer" target="_blank">源代码 · AGPL-3.0</a><a href="/pdf-tools/source.tar" download>下载对应版本源码</a><a href="https://github.com/PDFCraftTool/pdfcraft/tree/85bcc98bde29ffd3336bc8b63651c066e95ad2d0" target="_blank" rel="noopener noreferrer">PDFCraftTool/pdfcraft ↗</a></div></footer>
 <script type="module" src="/src/main.js"></script></body></html>

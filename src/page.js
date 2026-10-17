@@ -8,7 +8,7 @@ export function renderPage(operation, lang, source) {
   const content = toolContent[lang];
   const detail = content[operation];
   const labels = content.labels;
-  const mainSite = `https://pdf-to-md.app/${lang === 'en' ? '' : `${lang}/`}`;
+  const mainSite = `${SITE_ORIGIN}/${lang === 'en' ? '' : `${lang}/`}`;
   const sections = [['how', t.how], ['examples', labels.examples], ['capabilities', labels.scope], ['check-output', labels.checks], ['file-handling', labels.handling], ['troubleshooting', labels.trouble], ['faq', labels.faq], ['related', labels.related]];
   const canonical = `${SITE_ORIGIN}${toolPath(operation, lang)}`;
   return `<!doctype html>
@@ -18,7 +18,7 @@ export function renderPage(operation, lang, source) {
 ${LANGUAGES.map((code) => `<link rel="alternate" hreflang="${languageTag(code)}" href="${SITE_ORIGIN}${toolPath(operation, code)}">`).join('\n')}
 <link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}${toolPath(operation)}">
 <link rel="stylesheet" href="/src/style.css"></head><body data-tool="${operation}" data-lang="${lang}">
-  <header><a class="brand" href="${toolPath('merge', lang)}">PDF to MD <span>/ ${t.brand}</span></a><nav class="locale" aria-label="${t.language}">${LANGUAGES.map((code) => `<a href="${toolPath(operation, code)}" lang="${languageTag(code)}" hreflang="${languageTag(code)}" ${code === lang ? 'aria-current="true"' : ''}>${languageNames[code]}</a>`).join('')}</nav></header>
+  <header><a class="brand" href="${mainSite}">PDF to MD <span>/ ${t.brand}</span></a><nav class="locale" aria-label="${t.language}">${LANGUAGES.map((code) => `<a href="${toolPath(operation, code)}" lang="${languageTag(code)}" hreflang="${languageTag(code)}" ${code === lang ? 'aria-current="true"' : ''}>${languageNames[code]}</a>`).join('')}</nav></header>
   <main><nav class="tools" aria-label="${t.brand}">${['merge','split','rotate'].map((tool) => `<a ${tool === operation ? 'aria-current="page"' : ''} href="${toolPath(tool, lang)}">${t[tool]}</a>`).join('')}</nav>
     <div class="intro"><h1>${t[operation]}</h1><p>${t[`${operation}Intro`]}</p><p class="small">${t.privacy}</p></div>
     <noscript><p>${t.javascript}</p></noscript><section class="workbench" aria-labelledby="tool-title"><h2 id="tool-title">${t.choose}</h2><form id="tool-form"><fieldset id="controls"><label class="upload" for="files">${t.choose}<input id="files" name="files" type="file" accept=".pdf,application/pdf" ${operation === 'merge' ? 'multiple' : ''} aria-describedby="limits"></label><p class="small" id="limits">${t.limits}</p>
@@ -37,6 +37,6 @@ ${operation === 'rotate' ? `<label class="field" for="angle">${t.angle}<select i
     <section class="notes" id="troubleshooting"><h2>${escape(labels.trouble)}</h2>${detail.trouble.map(([problem, answer]) => `<h3>${escape(problem)}</h3><p>${escape(answer)}</p>`).join('')}</section>
     <section class="notes" id="faq"><h2>${escape(labels.faq)}</h2>${detail.faqs.map(([question, answer]) => `<details><summary>${escape(question)}</summary><p>${escape(answer)}</p></details>`).join('')}</section>
     <section class="notes" id="related"><h2>${escape(labels.related)}</h2><ul>${['merge', 'split', 'rotate'].filter((tool) => tool !== operation).map((tool) => `<li><a href="${toolPath(tool, lang)}">${t[tool]}</a></li>`).join('')}<li><a id="converter" href="${mainSite}">${t.converter}</a><p>${t.converterHelp}</p></li><li><a href="${mainSite}guides/scanned-pdf-ocr">${escape(labels.ocrGuide)}</a></li><li><a href="${mainSite}scanned-pdf-to-markdown">${escape(labels.scannedTool)}</a></li></ul></section>
-  </main><footer><p>${t.credit}</p><p>${t.sourceNote}</p><div class="source-links"><a id="source" href="${escape(source)}" rel="noopener noreferrer" target="_blank">${t.source}</a><a href="/source.tar" download>${t.archive}</a><a href="https://github.com/PDFCraftTool/pdfcraft/tree/85bcc98bde29ffd3336bc8b63651c066e95ad2d0" target="_blank" rel="noopener noreferrer">PDFCraftTool/pdfcraft ↗</a></div></footer>
+  </main><footer><p>${t.credit}</p><p>${t.sourceNote}</p><div class="source-links"><a id="source" href="${escape(source)}" rel="noopener noreferrer" target="_blank">${t.source}</a><a href="/pdf-tools/source.tar" download>${t.archive}</a><a href="https://github.com/PDFCraftTool/pdfcraft/tree/85bcc98bde29ffd3336bc8b63651c066e95ad2d0" target="_blank" rel="noopener noreferrer">PDFCraftTool/pdfcraft ↗</a></div></footer>
 <script type="module" src="/src/main.js"></script></body></html>`;
 }

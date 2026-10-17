@@ -21,6 +21,8 @@ for (const lang of ['en', 'zh', 'ja', 'de']) {
         assert.ok(related.includes(`href="${prefix}/${other}-pdf/"`));
       }
       const main = `https://pdf-to-md.app${prefix}/`;
+      assert.ok(html.includes(`class="brand" href="${main}"`));
+      assert.ok(html.includes('href="/pdf-tools/source.tar" download'));
       for (const target of [main, `${main}guides/scanned-pdf-ocr`, `${main}scanned-pdf-to-markdown`]) {
         assert.ok(related.includes(`href="${target}"`), `Missing related link: ${target}`);
       }
